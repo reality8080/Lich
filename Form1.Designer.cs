@@ -28,26 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.PanelMatrix = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.buttonSun = new System.Windows.Forms.Button();
+            this.buttonWed = new System.Windows.Forms.Button();
             this.NextMonthButton = new System.Windows.Forms.Button();
+            this.buttonSat = new System.Windows.Forms.Button();
             this.PreviousMonthButton = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.buttonThurs = new System.Windows.Forms.Button();
+            this.buttonFri = new System.Windows.Forms.Button();
+            this.buttonTues = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Today = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpkDate = new System.Windows.Forms.DateTimePicker();
             this.panel5 = new System.Windows.Forms.Panel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.NotifyCheckBox = new System.Windows.Forms.CheckBox();
-            this.buttonSun = new System.Windows.Forms.Button();
-            this.buttonSat = new System.Windows.Forms.Button();
-            this.buttonFri = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.buttonTues = new System.Windows.Forms.Button();
-            this.buttonWed = new System.Windows.Forms.Button();
-            this.buttonThurs = new System.Windows.Forms.Button();
+            this.tmNotify = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -106,6 +109,24 @@
             this.panel6.Size = new System.Drawing.Size(1063, 76);
             this.panel6.TabIndex = 0;
             // 
+            // buttonSun
+            // 
+            this.buttonSun.Location = new System.Drawing.Point(790, 14);
+            this.buttonSun.Name = "buttonSun";
+            this.buttonSun.Size = new System.Drawing.Size(84, 56);
+            this.buttonSun.TabIndex = 14;
+            this.buttonSun.Text = "CN";
+            this.buttonSun.UseVisualStyleBackColor = true;
+            // 
+            // buttonWed
+            // 
+            this.buttonWed.Location = new System.Drawing.Point(383, 14);
+            this.buttonWed.Name = "buttonWed";
+            this.buttonWed.Size = new System.Drawing.Size(84, 56);
+            this.buttonWed.TabIndex = 10;
+            this.buttonWed.Text = "Thứ 4";
+            this.buttonWed.UseVisualStyleBackColor = true;
+            // 
             // NextMonthButton
             // 
             this.NextMonthButton.Location = new System.Drawing.Point(985, 14);
@@ -114,6 +135,16 @@
             this.NextMonthButton.TabIndex = 8;
             this.NextMonthButton.Text = "Tháng sau";
             this.NextMonthButton.UseVisualStyleBackColor = true;
+            this.NextMonthButton.Click += new System.EventHandler(this.NextMonthButton_Click);
+            // 
+            // buttonSat
+            // 
+            this.buttonSat.Location = new System.Drawing.Point(687, 14);
+            this.buttonSat.Name = "buttonSat";
+            this.buttonSat.Size = new System.Drawing.Size(84, 56);
+            this.buttonSat.TabIndex = 13;
+            this.buttonSat.Text = "Thứ 7";
+            this.buttonSat.UseVisualStyleBackColor = true;
             // 
             // PreviousMonthButton
             // 
@@ -123,11 +154,49 @@
             this.PreviousMonthButton.TabIndex = 7;
             this.PreviousMonthButton.Text = "Tháng trước";
             this.PreviousMonthButton.UseVisualStyleBackColor = true;
+            this.PreviousMonthButton.Click += new System.EventHandler(this.PreviousMonthButton_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(180, 14);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(84, 56);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Thứ 2";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonThurs
+            // 
+            this.buttonThurs.Location = new System.Drawing.Point(484, 14);
+            this.buttonThurs.Name = "buttonThurs";
+            this.buttonThurs.Size = new System.Drawing.Size(84, 56);
+            this.buttonThurs.TabIndex = 11;
+            this.buttonThurs.Text = "Thứ 5";
+            this.buttonThurs.UseVisualStyleBackColor = true;
+            // 
+            // buttonFri
+            // 
+            this.buttonFri.Location = new System.Drawing.Point(586, 14);
+            this.buttonFri.Name = "buttonFri";
+            this.buttonFri.Size = new System.Drawing.Size(84, 56);
+            this.buttonFri.TabIndex = 12;
+            this.buttonFri.Text = "Thứ 6";
+            this.buttonFri.UseVisualStyleBackColor = true;
+            // 
+            // buttonTues
+            // 
+            this.buttonTues.Location = new System.Drawing.Point(281, 14);
+            this.buttonTues.Name = "buttonTues";
+            this.buttonTues.Size = new System.Drawing.Size(84, 56);
+            this.buttonTues.TabIndex = 9;
+            this.buttonTues.Text = "Thứ 3";
+            this.buttonTues.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.Today);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.dtpkDate);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Location = new System.Drawing.Point(2, 0);
             this.panel2.Name = "panel2";
@@ -142,13 +211,15 @@
             this.Today.TabIndex = 2;
             this.Today.Text = "Hôm nay";
             this.Today.UseVisualStyleBackColor = true;
+            this.Today.Click += new System.EventHandler(this.Today_Click);
             // 
-            // dateTimePicker1
+            // dtpkDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(399, 20);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(267, 22);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpkDate.Location = new System.Drawing.Point(399, 20);
+            this.dtpkDate.Name = "dtpkDate";
+            this.dtpkDate.Size = new System.Drawing.Size(267, 22);
+            this.dtpkDate.TabIndex = 1;
+            this.dtpkDate.ValueChanged += new System.EventHandler(this.dtpkDate_ValueChanged);
             // 
             // panel5
             // 
@@ -180,6 +251,7 @@
             0,
             0,
             0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // NotifyCheckBox
             // 
@@ -190,70 +262,16 @@
             this.NotifyCheckBox.TabIndex = 0;
             this.NotifyCheckBox.Text = "Notify";
             this.NotifyCheckBox.UseVisualStyleBackColor = true;
+            this.NotifyCheckBox.CheckedChanged += new System.EventHandler(this.NotifyCheckBox_CheckedChanged);
             // 
-            // buttonSun
+            // tmNotify
             // 
-            this.buttonSun.Location = new System.Drawing.Point(790, 14);
-            this.buttonSun.Name = "buttonSun";
-            this.buttonSun.Size = new System.Drawing.Size(84, 56);
-            this.buttonSun.TabIndex = 14;
-            this.buttonSun.Text = "CN";
-            this.buttonSun.UseVisualStyleBackColor = true;
+            this.tmNotify.Enabled = true;
+            this.tmNotify.Interval = 60000;
             // 
-            // buttonSat
+            // timer1
             // 
-            this.buttonSat.Location = new System.Drawing.Point(687, 14);
-            this.buttonSat.Name = "buttonSat";
-            this.buttonSat.Size = new System.Drawing.Size(84, 56);
-            this.buttonSat.TabIndex = 13;
-            this.buttonSat.Text = "Thứ 7";
-            this.buttonSat.UseVisualStyleBackColor = true;
-            // 
-            // buttonFri
-            // 
-            this.buttonFri.Location = new System.Drawing.Point(586, 14);
-            this.buttonFri.Name = "buttonFri";
-            this.buttonFri.Size = new System.Drawing.Size(84, 56);
-            this.buttonFri.TabIndex = 12;
-            this.buttonFri.Text = "Thứ 6";
-            this.buttonFri.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(180, 14);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(84, 56);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Thứ 2";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonTues
-            // 
-            this.buttonTues.Location = new System.Drawing.Point(281, 14);
-            this.buttonTues.Name = "buttonTues";
-            this.buttonTues.Size = new System.Drawing.Size(84, 56);
-            this.buttonTues.TabIndex = 9;
-            this.buttonTues.Text = "Thứ 3";
-            this.buttonTues.UseVisualStyleBackColor = true;
-            // 
-            // buttonWed
-            // 
-            this.buttonWed.Location = new System.Drawing.Point(383, 14);
-            this.buttonWed.Name = "buttonWed";
-            this.buttonWed.Size = new System.Drawing.Size(84, 56);
-            this.buttonWed.TabIndex = 10;
-            this.buttonWed.Text = "Thứ 4";
-            this.buttonWed.UseVisualStyleBackColor = true;
-            // 
-            // buttonThurs
-            // 
-            this.buttonThurs.Location = new System.Drawing.Point(484, 14);
-            this.buttonThurs.Name = "buttonThurs";
-            this.buttonThurs.Size = new System.Drawing.Size(84, 56);
-            this.buttonThurs.TabIndex = 11;
-            this.buttonThurs.Text = "Thứ 5";
-            this.buttonThurs.UseVisualStyleBackColor = true;
+//            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // Form1
             // 
@@ -262,7 +280,9 @@
             this.ClientSize = new System.Drawing.Size(1063, 673);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -283,7 +303,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button Today;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpkDate;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox NotifyCheckBox;
@@ -298,6 +318,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button buttonTues;
         private System.Windows.Forms.Button buttonThurs;
+        private System.Windows.Forms.Timer tmNotify;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
